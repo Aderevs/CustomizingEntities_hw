@@ -6,7 +6,7 @@ namespace Task1
     {
         static async Task Main(string[] args)
         {
-            MyDataBase myDataBase = new MyDataBase();
+            using MyDatabase myDataBase = new MyDatabase();
             var orders = new List<Order>
             {
                 new Order

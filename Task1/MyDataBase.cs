@@ -1,19 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Core;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Task2;
 namespace Task1
 {
-    internal class MyDataBase : DbContext
+    public class MyDatabase : DbContext
     {
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Error> Errors { get; set; }
 
-        public MyDataBase()
+        public MyDatabase()
         {
             Database.EnsureCreated();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().HasAlternateKey(ord => new { ord.Name, ord.OrderAlterId });
+            modelBuilder.Ignore<Error>();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

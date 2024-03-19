@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    internal class Order
+    public class Order
     {
+
         [Column("Id")]
         public Guid OrderId { get; set; }
 
@@ -25,5 +26,9 @@ namespace Task1
 
         [MaxLength(200)]
         public string Description { get; set; }
+
+        [Column("AlterId")]
+        [Required]
+        public int OrderAlterId { get; set; }
     }
 }
