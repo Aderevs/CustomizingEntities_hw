@@ -11,24 +11,24 @@ namespace Task1
     public class Order
     {
 
-        [Column("Id")]
+        //[Column("Id")]
         public Guid OrderId { get; set; }
 
-        [MaxLength(100)]
+        //[MaxLength(100)]
         public string Name { get; set; }
 
-        [Column(TypeName = "Date")]
-        [Required]
+        //[Column(TypeName = "Date")]
+        //[Required]
         public DateTime Create {  get; set; }
 
-        [Column(TypeName = "Date")]
+        //[Column(TypeName = "Date")]
         public DateTime Update { get; set; }
 
-        [MaxLength(200)]
+        //[MaxLength(300)]
         public string Description { get; set; }
 
-        [Column("AlterId")]
-        [Required]
+        //[Column("AlterId")]
+        //[Required]
         public int OrderAlterId { get; set; }
     }
 }

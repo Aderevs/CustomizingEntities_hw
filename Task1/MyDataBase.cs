@@ -21,6 +21,12 @@ namespace Task1
         {
             modelBuilder.Entity<Order>().HasAlternateKey(ord => new { ord.Name, ord.OrderAlterId });
             modelBuilder.Ignore<Error>();
+            modelBuilder.Entity<Order>().Property(ord => ord.OrderId).HasColumnName("Id");
+            modelBuilder.Entity<Order>().Property(ord => ord.OrderAlterId).HasColumnName("AlterId").IsRequired();
+            modelBuilder.Entity<Order>().Property(ord => ord.Name).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<Order>().Property(ord => ord.Create).HasColumnType("Date").IsRequired();
+            modelBuilder.Entity<Order>().Property(ord => ord.Update).HasColumnType("Date");
+            modelBuilder.Entity<Order>().Property(ord => ord.Description).HasMaxLength(300);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
